@@ -41,21 +41,9 @@ export async function signup(req, res) {
                     console.error("Error upserting Stream user:", error);
                 }
 
-            const token=jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: "7d" });
-             res.cookie("jwt",token,{
-                maxAge: 7 * 24 * 60 * 60 * 1000,
-                httpOnly: true,
-                sameSite:"strict",
-                secure: process.env.NODE_ENV === "production"
-             })
              res.status(201).json({
   success: true,
-  user: {
-    _id: newUser._id,
-    fullName: newUser.fullName,
-    email: newUser.email,
-    profilePic: newUser.profilePic
-  }
+  message:"signup successful"
 });
        }catch(error){
     console.log("Signup Error:", error);

@@ -21,6 +21,9 @@ const NotificationsPage = () => {
 
   const incomingRequests = friendRequests?.incomingReqs || [];
   const acceptedRequests = friendRequests?.acceptedReqs || [];
+  console.log(friendRequests);
+console.log(incomingRequests);
+console.log(acceptedRequests);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8">

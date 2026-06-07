@@ -6,7 +6,7 @@ import {
   getUserFriends,
   sendFriendRequest,
 } from "../lib/api";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { CheckCircleIcon, MapPinIcon, UserPlusIcon, UsersIcon } from "lucide-react";
 
 import { capitialize } from "../lib/utils";
@@ -47,6 +47,9 @@ const HomePage = () => {
       setOutgoingRequestsIds(outgoingIds);
     }
   }, [outgoingFriendReqs]);
+  console.log("friends:", friends);
+console.log("recommendedUsers:", recommendedUsers);
+console.log("outgoingFriendReqs:", outgoingFriendReqs);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8">
