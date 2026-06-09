@@ -1,6 +1,6 @@
-import { useMutation,useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { signup } from "../lib/api";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useSignUp = () => {
   const queryClient = useQueryClient();
@@ -8,11 +8,17 @@ const useSignUp = () => {
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: signup,
-    onSuccess: () => {
-      navigate("/login");
+    onSuccess: (data) => {
+      queryClient.setQueryData(["authUser"], data.user);
+      navigate("/onboarding");
     },
   });
 
-  return { isPending, error, signupMutation: mutate };
+  return {
+    signupMutation: mutate,
+    isPending,
+    error,
+  };
 };
+
 export default useSignUp;
